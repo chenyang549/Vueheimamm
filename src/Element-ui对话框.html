@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element-ui对话框</title>
+    <!-- 导入Vue -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+<style>
+    .title {
+        background: #0094ff;
+        text-align: center;
+        height: 50px;
+        line-height: 50px;
+        font-size: 24px;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- 
+            el-dialog弹窗组件
+            :visible.sync="值"   该值是控制是否显示该弹窗
+            title弹窗的标题
+            slot重写某部分
+            有二个区域可以重写 1:title  2:footer
+            show-close   boolean,是否显示关闭按钮 
+        -->
+        <!-- <el-button type="text" @click="outerVisible = true">显示控制</el-button> -->
+        <button @click="dialogFormVisible=!dialogFormVisible">显示控制</button>
+
+        <el-dialog title="用户注册" :visible.sync="dialogFormVisible" :show-close="false">
+           <div slot="title" class="title">用户注册</div>
+           <el-form>
+               <el-form-item>
+                   <el-input></el-input>
+               </el-form-item>
+           </el-form>
+            <div slot="footer" class="dialog-footer">
+                <el-button @click="dialogFormVisible = false">取 消</el-button>
+                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
+            </div>
+        </el-dialog>
+
+        <script>
+            new Vue({
+                el:'#app',
+                data: {
+                    dialogFormVisible:false,
+                    outerVisible:false,
+                    innerVisible:false
+                }
+            })
+        </script>
+    </div>
+</body>
+
+</html>

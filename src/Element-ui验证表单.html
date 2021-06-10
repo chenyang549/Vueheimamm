@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element-ui验证表单</title>
+    <!-- 导入Vue -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+            <el-form-item label="活动名称" prop="name">
+                <el-input v-model="ruleForm.name"></el-input>
+            </el-form-item>
+            <el-form-item label="电话号码" prop="phone">
+                <el-input v-model="ruleForm.phone"></el-input>
+            </el-form-item>
+            <el-form-item label="登录密码" >
+                <el-input v-model="ruleForm.password"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm('ruleForm')">立即创建</el-button>
+                <el-button @click="resetForm('ruleForm')">重置</el-button>
+            </el-form-item>
+        </el-form>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    ruleForm: {
+                        name: '',
+                        phone:'',
+                        password:''
+                    },
+                    rules: {
+                        name: [
+                            { required: true, message: '请输入活动名称', trigger: 'blur' },
+                            { min: 3, max: 5, message: '长度在 3 到 5 个字符', trigger: 'blur' }
+                        ],
+                        phone: [
+                            { required: true, message: '请输入活动名称', trigger: 'blur' },
+                            { min: 11, max: 11, message: '长度在11 个字符', trigger: 'blur' }
+                        ]
+                    }
+                }
+
+            },
+            methods: {
+                // submitForm(formName) {
+                //     // 这里就是获取了el-form组件的this
+                //     /*
+                //     父访问子元素的this
+                //     1:在子元素身上定义一个ref属性   ref="值"
+                //     2:通过代码访问子组件this     父组件this.$refs.值
+                //     */
+                //     this.$refs[formName].validate((valid) => {
+                //         if (valid) {
+                //             alert('submit!');
+                //         } else {
+                //             console.log('error submit!!');
+                //             return false;
+                //         }
+                //     });
+                // },
+                submitForm() {
+                    // 这里就是获取了el-form组件的this
+                    /*
+                    父访问子元素的this
+                    1:在子元素身上定义一个ref属性   ref="值"
+                    2:通过代码访问子组件this     父组件this.$refs.值
+                    */
+
+                    /*
+                    validate是对整个表单进行一个验证,就是说触发一下整个表单的验证规则
+                    validate它的参数是一个回调函数,可以理解后面就是跟一个function,该function有一个参数,就是所有验证是
+                    否成立,它是一个boolean值，true:表示没有任何错误,都成立,false:只要有一条规则不成立,它都会返回一个false
+                    */
+                    this.$refs.ruleForm.validate(
+                        function (result) {
+                            alert(result)
+                        }
+                     );
+                },
+                // this.$refs[formName] 负责父子间传值
+                resetForm(formName) {
+                    this.$refs[formName].resetFields();
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

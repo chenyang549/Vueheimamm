@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element-ui栅格栏体验</title>
+
+</head>
+<style>
+   
+
+    .el-row {
+        margin-bottom: 20px;
+
+    }
+
+    .el-col {
+        border-radius: 4px;
+    }
+
+    .bg-purple-dark {
+        background: #99a9bf;
+    }
+
+    .bg-purple {
+        background: #d3dce6;
+    }
+
+    .bg-purple-light {
+        background: #e5e9f2;
+    }
+
+    .grid-content {
+        border-radius: 4px;
+        min-height: 36px;
+    }
+
+    .row-bg {
+        padding: 10px 0;
+        background-color: #f9fafc;
+    }
+</style>
+
+<body>
+    <div id="app">
+        <!-- 
+            行， el-row
+            列： el-col   span属性  span 代表栏数,它是number型 一行最多24栏
+            栏栅是分24栏   
+         -->
+        <el-row>
+            <el-col :span="4">
+                <div class="grid-content bg-purple-dark"></div>
+            </el-col>
+        </el-row>
+        <el-row>
+            <el-col :span="12"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="12"><div class="grid-content bg-purple-light"></div></el-col>
+          </el-row>
+          <el-row>
+            <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple-light"></div></el-col>
+            <el-col :span="8"><div class="grid-content bg-purple"></div></el-col>
+          </el-row>
+   
+        </div>
+    <!-- 导入Vue -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                
+            }
+        })
+    </script>
+
+  
+</body>
+
+</html>

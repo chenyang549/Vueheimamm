@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Element-ui 多选框</title>
+    <!-- 导入Vue -->
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <!-- 引入组件库 -->
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        {{checkboxValue}}
+        <!-- {{checkboxArray}} -->
+        <label>
+            选项1
+            <input type="checkbox" value="1" v-model="checkboxValue">
+        </label>
+        <label>
+            选项2
+            <input type="checkbox" value="2" v-model="checkboxValue">
+        </label>
+        <label>
+            选项3
+            <input type="checkbox" value="3" v-model="checkboxValue">
+        </label>
+        <label>
+            选项4
+            <input type="checkbox" value="4" v-model="checkboxValue">
+        </label>
+        <!-- 多选框里面的 -->
+        {{checked}}
+        <el-checkbox v-model="checked" label="abc">备选项</el-checkbox>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data:{
+                // 如果checkbox的v-model绑定的值它初始是空字符串，那么它选中后结果是true,不勾选它变为false
+                // 如果checkbox的v-model绑定的值它初始是数组时,那么它选中后结果是往该数组里加入选项的value
+                // checkboxValue:'',
+                checkboxValue:[],
+                // checkboxArray:[]
+                // checked:""
+                checked:[]
+            }
+        })
+    </script>
+</body>
+
+</html>
